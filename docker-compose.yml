@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+  workspace:
+    image: dung13890/laravel-env
+    restart: always
+    volumes:
+      - ./:/var/www/app/docker
+    tty: true
