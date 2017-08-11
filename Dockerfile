@@ -12,4 +12,4 @@ RUN chmod +x /*.sh
 
 RUN ./provision.sh
 
-WORKDIR /var/www/apps
+WORKDIR /var/www/app
