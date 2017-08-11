@@ -6,7 +6,7 @@ services:
     volumes:
       - ./:/var/www/app
   workspace:
-    image: dung13890/laravel-env
+    build: ./
     restart: always
     volumes_from:
       - application
@@ -30,10 +30,10 @@ services:
   caddy:
     image: abiosoft/caddy
     restart: always
+    volumes:
+      - ./Caddyfile:/srv/Caddyfile
     volumes_from:
       - application
-    volumes:
-      - ./.docker/caddyfile:/srv
     ports:
       - "80:80"
       - "443:443"
