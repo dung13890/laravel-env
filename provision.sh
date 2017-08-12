@@ -5,7 +5,6 @@
 # https://github.com/dung13890
 
 # Update Package List
-
 apt-get update
 apt-get install -y software-properties-common locales
 
@@ -56,7 +55,11 @@ apt-get install -y --force-yes \
 
 # Remove load xdebug extension
 sed -i 's/^/;/g' /etc/php/7.0/cli/conf.d/20-xdebug.ini
+
+# Set php7.0-fpm
 sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.0/fpm/pool.d/www.conf
+mkdir -p /var/run/php
+touch /var/run/php/php7.0-fpm.sock
 
 # Install Composer, PHPCS
 curl -sS https://getcomposer.org/installer | php
