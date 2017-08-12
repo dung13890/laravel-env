@@ -6,12 +6,10 @@ services:
     volumes:
       - ./:/var/www/app
   workspace:
-    build: ./
+    image: dung13890/laravel-env
     restart: always
     volumes_from:
       - application
-    expose:
-      - "9000"
     tty: true
     links:
      - mysql
