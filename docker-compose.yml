@@ -11,27 +11,3 @@ services:
     volumes_from:
       - application
     tty: true
-    links:
-     - mysql
-  mysql:
-    restart: always
-    image: mysql
-    volumes:
-      - ./.docker/mysql:/var/lib/mysql
-    expose:
-      - "3306"
-    environment:
-      MYSQL_DATABASE: homestead
-      MYSQL_USER: homestead
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: root
-  caddy:
-    image: abiosoft/caddy
-    restart: always
-    volumes:
-      - ./Caddyfile:/srv/Caddyfile
-    volumes_from:
-      - application
-    ports:
-      - "80:80"
-      - "443:443"
