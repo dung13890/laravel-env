@@ -38,8 +38,8 @@ apt-get install -y --force-yes \
     php7.0-gd \
     php7.0-fpm \
     php7.0-xdebug \
-    php7.1-bcmath \
-    php7.1-intl \
+    php7.0-bcmath \
+    php7.0-intl \
     php7.0-dev \
     libcurl4-openssl-dev \
     libedit-dev \
@@ -51,6 +51,8 @@ apt-get install -y --force-yes \
     git \
     curl \
     vim \
+    zip \
+    unzip \
     supervisor
 
 # Remove load xdebug extension
