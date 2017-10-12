@@ -60,6 +60,8 @@ sed -i 's/^/;/g' /etc/php/7.0/cli/conf.d/20-xdebug.ini
 
 # Set php7.0-fpm
 sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.0/fpm/pool.d/www.conf
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.0/fpm/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 25M/" /etc/php/7.0/fpm/php.ini
 mkdir -p /var/run/php
 mkdir -p /var/log/php-fpm
 touch /var/run/php/php7.0-fpm.sock
