@@ -22,25 +22,27 @@ apt-add-repository ppa:ondrej/php -y
 # Install PHP-CLI 7, some PHP extentions
 apt-get update
 apt-get install -y --force-yes \
-    php7.0-cli \
-    php7.0-common \
-    php7.0-curl \
-    php7.0-json \
-    php7.0-xml \
-    php7.0-mbstring \
-    php7.0-mcrypt \
-    php7.0-mysql \
-    php7.0-pgsql \
-    php7.0-sqlite \
-    php7.0-sqlite3 \
-    php7.0-zip \
-    php7.0-memcached \
-    php7.0-gd \
-    php7.0-fpm \
-    php7.0-xdebug \
-    php7.0-bcmath \
-    php7.0-intl \
-    php7.0-dev \
+    php7.1-cli \
+    php7.1-dev \
+    php7.1-common \
+    php7.1-curl \
+    php7.1-json \
+    php7.1-xml \
+    php7.1-mbstring \
+    php7.1-mcrypt \
+    php7.1-mysql \
+    php7.1-pgsql \
+    php7.1-sqlite \
+    php7.1-sqlite3 \
+    php7.1-zip \
+    php7.1-memcached \
+    php7.1-redis \
+    php7.1-gd \
+    php7.1-fpm \
+    php7.1-xdebug \
+    php7.1-bcmath \
+    php7.1-intl \
+    php7.1-dev \
     libcurl4-openssl-dev \
     libedit-dev \
     libssl-dev \
@@ -56,15 +58,15 @@ apt-get install -y --force-yes \
     supervisor
 
 # Remove load xdebug extension
-sed -i 's/^/;/g' /etc/php/7.0/cli/conf.d/20-xdebug.ini
+sed -i 's/^/;/g' /etc/php/7.1/cli/conf.d/20-xdebug.ini
 
-# Set php7.0-fpm
-sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.0/fpm/pool.d/www.conf
-sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.0/fpm/php.ini
-sed -i "s/post_max_size = .*/post_max_size = 25M/" /etc/php/7.0/fpm/php.ini
+# Set php7.1-fpm
+sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.1/fpm/pool.d/www.conf
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.1/fpm/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 25M/" /etc/php/7.1/fpm/php.ini
 mkdir -p /var/run/php
 mkdir -p /var/log/php-fpm
-touch /var/run/php/php7.0-fpm.sock
+touch /var/run/php/php7.1-fpm.sock
 
 # Install Composer, PHPCS
 curl -sS https://getcomposer.org/installer | php
@@ -77,7 +79,13 @@ ln -s /root/.composer/vendor/bin/phpcs /usr/bin/phpcs
 # Install Nodejs
 curl -sL https://deb.nodesource.com/setup_7.x | bash -
 apt-get install -y nodejs
-npm install -g bower eslint
+npm install -g bower
+
+# Install yarn
+curl -s https://dl.yarnpkg.com/debian/pubkey.gpg -o /tmp/yarn-pubkey.gpg
+apt-key add /tmp/yarn-pubkey.gpg && rm /tmp/yarn-pubkey.gpg
+echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
+apt-get update && apt-get install yarn
 
 # Clean up
 apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
