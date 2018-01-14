@@ -27,6 +27,7 @@ apt-get install -y --force-yes \
     php7.1-common \
     php7.1-curl \
     php7.1-json \
+    php7.1-soap \
     php7.1-xml \
     php7.1-mbstring \
     php7.1-mcrypt \
@@ -35,14 +36,16 @@ apt-get install -y --force-yes \
     php7.1-sqlite \
     php7.1-sqlite3 \
     php7.1-zip \
-    php7.1-memcached \
-    php7.1-redis \
     php7.1-gd \
-    php7.1-fpm \
     php7.1-xdebug \
     php7.1-bcmath \
     php7.1-intl \
     php7.1-dev \
+    php7.1-fpm \
+    php-pear \
+    php-memcached \
+    php-redis \
+    php-apcu \
     libcurl4-openssl-dev \
     libedit-dev \
     libssl-dev \
@@ -62,8 +65,8 @@ sed -i 's/^/;/g' /etc/php/7.1/cli/conf.d/20-xdebug.ini
 
 # Set php7.1-fpm
 sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.1/fpm/pool.d/www.conf
-sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.1/fpm/php.ini
-sed -i "s/post_max_size = .*/post_max_size = 25M/" /etc/php/7.1/fpm/php.ini
+sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.1/fpm/php.ini
+sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.1/fpm/php.ini
 mkdir -p /var/run/php
 mkdir -p /var/log/php-fpm
 touch /var/run/php/php7.1-fpm.sock
