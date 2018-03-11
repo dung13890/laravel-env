@@ -72,8 +72,8 @@ sed -i 's/^/;/g' /etc/php/7.2/cli/conf.d/20-xdebug.ini
 sed -i "s/listen =.*/listen = 0.0.0.0:9000/" /etc/php/7.2/fpm/pool.d/www.conf
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.2/fpm/php.ini
 sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.2/fpm/php.ini
-sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/7.2/fpm/php.ini
-sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.2/fpm/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 50M/" /etc/php/7.2/fpm/php.ini
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 50M/" /etc/php/7.2/fpm/php.ini
 mkdir -p /var/run/php
 mkdir -p /var/log/php-fpm
 touch /var/run/php/php7.2-fpm.sock
