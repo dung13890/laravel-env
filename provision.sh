@@ -45,6 +45,8 @@ apt-get install -y --force-yes \
     php-memcached \
     php-redis \
     php-apcu \
+    php*-imap \
+    php*-mcrypt \
     libcurl4-openssl-dev \
     libedit-dev \
     libssl-dev \
